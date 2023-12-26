@@ -4,7 +4,6 @@
         "structure": [
             { "lyricSet": 1, "chordSet": 1 },
             { "lyricSet": 0, "chordSet": 0 },
-            { "lyricSet": 0, "chordSet": 0 },
             { "lyricSet": 2, "chordSet": 1 }
         ],
         "lyricsSets": [
@@ -14,7 +13,7 @@
                     "Chrystus się rodzi, nas oswobodzi",
                     "Anieli grają, króle witają",
                     "Pasterze śpiewają, bydlęta klękają",
-                    "Cuda, cuda ogłaszają."
+                    "Cuda, cuda ogłaszają. ////x2"
                 ]
             },
             {

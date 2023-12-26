@@ -9,5 +9,5 @@ export interface IChordsSet {
         | 'outro'
         | 'pre-chorus'
         | 'post-chorus'
-    chords: IChord[]
+    chords: IChord[][]
 }

@@ -1,23 +1,12 @@
 'use client'
 
 import type { NextPage } from 'next'
-import { useTheme } from 'next-themes'
+import Link from 'next/link'
 
 const Dashboard: NextPage = () => {
-    const { theme, setTheme } = useTheme()
-
     return (
         <>
-            <button
-                className={`h-10 w-10 absolute right-5 top-2 rounded-md hover:scale-110 active:scale-100 duration-200 bg-slate-200 dark:bg-[#212933]`}
-                onClick={() => setTheme(theme === 'dark' ? 'light' : 'dark')}
-            >
-                {theme === 'dark' ? (
-                    <span className={`icon-[mdi--weather-sunny]`} />
-                ) : (
-                    <span className={`icon-[mdi--weather-night]`} />
-                )}
-            </button>
+            <Link href="/song/0">Song</Link>
         </>
     )
 }
