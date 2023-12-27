@@ -11,6 +11,8 @@ export async function GET(
         'utf8'
     )
     const data = await JSON.parse(file)
+    const song = data[id]
+    const songJSON = JSON.stringify(song)
 
-    return NextResponse.json(data[id], { status: 200 })
+    return NextResponse.json(songJSON, { status: 200 })
 }

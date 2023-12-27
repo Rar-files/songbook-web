@@ -12,7 +12,7 @@ const SongPage: NextPage<{ params: { id: string } }> = ({ params }) => {
 
     if (error) return <div>failed to load</div>
     if (isLoading) return <div>loading...</div>
-    return <Song song={data} />
+    return <Song song={JSON.parse(data)} />
 }
 
 export default SongPage
