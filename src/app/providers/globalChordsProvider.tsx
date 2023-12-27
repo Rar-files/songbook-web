@@ -1,29 +1,23 @@
 'use client'
 
 import { IGlobalChords } from '@/types/IGlobalChords'
-import { createContext, useEffect, useState } from 'react'
+import { createContext } from 'react'
+import useSWR from 'swr'
 
 export const GlobalChordsContext = createContext<IGlobalChords>({
-    globalChords: [],
+    zeroKeyID: 0,
+    chords: [],
 })
 
 const GlobalChordsProvider = ({ children }: { children: React.ReactNode }) => {
-    const [chords, setChords] = useState<IGlobalChords>({
-        globalChords: [],
-    })
+    const { data, error, isLoading } = useSWR('/api/global-chords', (...args) =>
+        fetch(...args).then((res) => res.json())
+    )
 
-    useEffect(() => {
-        if (!chords)
-            fetch('api/global-chords', {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-            }).then((res) => res.json().then((data) => setChords(data)))
-    })
-
+    if (error) return <div>failed to load</div>
+    if (isLoading) return <div>loading...</div>
     return (
-        <GlobalChordsContext.Provider value={chords}>
+        <GlobalChordsContext.Provider value={data}>
             {children}
         </GlobalChordsContext.Provider>
     )

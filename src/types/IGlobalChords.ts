@@ -1,3 +1,4 @@
 export interface IGlobalChords {
-    globalChords: string[][]
+    zeroKeyID: number
+    chords: string[][]
 }
