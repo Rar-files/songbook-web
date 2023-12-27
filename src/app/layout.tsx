@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 
 import '@/styles/tailwind.css'
 import '@/styles/globalHTMLElements.css'
+import ToggleDarkBtn from '@/components/menu-bar/toggleDarkBtn'
 
 export const metadata: Metadata = {
     title: 'About',
@@ -13,7 +14,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <html lang="en">
             <body>
-                <Providers>{children}</Providers>
+                <Providers>
+                    <ToggleDarkBtn />
+                    {children}
+                </Providers>
             </body>
         </html>
     )

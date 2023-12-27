@@ -1,10 +1,10 @@
 import { FC } from 'react'
-import ToggleDarkBtn from './toggleDarkBtn'
+import HomeBtn from './home-btn'
 
 const MenuBar: FC = () => {
     return (
         <div>
-            <ToggleDarkBtn />
+            <HomeBtn />
         </div>
     )
 }
