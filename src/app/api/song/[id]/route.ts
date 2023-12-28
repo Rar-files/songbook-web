@@ -41,12 +41,17 @@ export const GET = async (
 
 export const DELETE = async (
     request: Request,
-    { params }: { params: { id: number } }
+    { params }: { params: { id: string } }
 ) => {
     try {
-        const id = params.id
+        const id = +params.id
         await prisma.song.delete({
             where: { id },
+            include: {
+                chordsSets: true,
+                lyricsSets: true,
+                structure: true,
+            },
         })
 
         return new NextResponse(null, { status: 204 })

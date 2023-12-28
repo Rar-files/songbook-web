@@ -1,5 +1,6 @@
 'use client'
 
+import { ISong } from '@/types/ISong'
 import type { NextPage } from 'next'
 import Link from 'next/link'
 import { useState } from 'react'
@@ -33,7 +34,11 @@ const Dashboard: NextPage = () => {
     if (error) return <div>failed to load</div>
     if (isLoading) return <div>loading...</div>
 
-    const dataToShow = sortData(data as SongData[])
+    const songs = data as ISong[]
+    const listOfSongsNamesAndIds = songs.map(
+        (song) => ({ id: song.id, name: song.name }) as SongData
+    )
+    const dataToShow = sortData(listOfSongsNamesAndIds)
 
     return (
         <div className="flex flex-col">
