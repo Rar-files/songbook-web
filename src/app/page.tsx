@@ -11,7 +11,7 @@ const Dashboard: NextPage = () => {
     if (error) return <div>failed to load</div>
     if (isLoading) return <div>loading...</div>
     return (
-        <div className="flex flex-col m-4">
+        <div className="flex flex-col m-3">
             {data.map(
                 (songData: { id: number; name: string }, index: number) => (
                     <Link key={index} href={`/song/${songData.id}`}>
