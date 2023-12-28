@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const RootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <html lang="en">
-            <body>
+            <body className={`bg-slate-100 dark:bg-[#0e1013]`}>
                 <Providers>
                     <ToggleDarkBtn />
                     {children}
