@@ -1,16 +1,10 @@
-import { ISong } from '@/types/ISong'
-import { promises as fs } from 'fs'
+import { PrismaClient } from '@prisma/client'
 import { NextResponse } from 'next/server'
 
-export async function GET() {
-    const file = await fs.readFile(
-        process.cwd() + '/public/data/songbook.json',
-        'utf8'
-    )
-    const data = await JSON.parse(file)
+const prisma = new PrismaClient()
 
-    return NextResponse.json(
-        data.map((value: ISong) => value.name),
-        { status: 200 }
-    )
+export const GET = async () => {
+    const songs = await prisma.song.findMany()
+
+    return NextResponse.json(songs, { status: 200 })
 }
