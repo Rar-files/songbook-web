@@ -15,8 +15,26 @@ const Dashboard: NextPage = () => {
     const { data, error, isLoading } = useSWR(`/api/song/list`, (...args) =>
         fetch(...args).then((res) => res.json())
     )
+
+    const sortData = (data: SongData[]) => {
+        return data.sort((a, b) => {
+            const nameA = a.name.toLowerCase()
+            const nameB = b.name.toLowerCase()
+            if (nameA < nameB) {
+                return -1
+            }
+            if (nameA > nameB) {
+                return 1
+            }
+            return 0
+        })
+    }
+
     if (error) return <div>failed to load</div>
     if (isLoading) return <div>loading...</div>
+
+    const dataToShow = sortData(data as SongData[])
+
     return (
         <div className="flex flex-col">
             <input
@@ -25,7 +43,7 @@ const Dashboard: NextPage = () => {
                 onChange={(e) => setSearch(e.target.value)}
             />
             <div className="flex flex-col m-3 mt-1">
-                {(data as [])
+                {dataToShow
                     .filter((value: SongData) =>
                         value.name.toLowerCase().includes(search.toLowerCase())
                     )

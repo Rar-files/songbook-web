@@ -4,7 +4,18 @@ import { NextResponse } from 'next/server'
 const prisma = new PrismaClient()
 
 export const GET = async () => {
-    const songs = await prisma.song.findMany()
+    const songs = await prisma.song.findMany({
+        include: {
+            structure: true,
+        },
+    })
 
-    return NextResponse.json(songs, { status: 200 })
+    const songResponse = songs.map((song) => {
+        return {
+            id: song.id,
+            name: song.name,
+        }
+    })
+
+    return NextResponse.json(songResponse, { status: 200 })
 }
