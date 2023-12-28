@@ -19,7 +19,7 @@ model Song {
 model StructureElement {
     id          Int         @id @default(autoincrement())
     songId      Int
-    song        Song        @relation(fields: [songId], references: [id])
+    song        Song        @relation(fields: [songId], references: [id], onDelete: Cascade)
     lyricSet    Int
     chordSet    Int
     multiple    Int
@@ -28,7 +28,7 @@ model StructureElement {
 model LyricsSet {
     id                      Int         @id @default(autoincrement())
     songId      Int
-    song        Song        @relation(fields: [songId], references: [id])
+    song        Song        @relation(fields: [songId], references: [id], onDelete: Cascade)
     header                  String
     lyrics                  String[]
 }
@@ -36,7 +36,7 @@ model LyricsSet {
 model ChordsSet {
     id                      Int         @id @default(autoincrement())
     songId      Int
-    song        Song        @relation(fields: [songId], references: [id])
+    song        Song        @relation(fields: [songId], references: [id], onDelete: Cascade)
     type        String
     chords      String
 }
