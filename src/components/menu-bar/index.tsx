@@ -9,7 +9,7 @@ const MenuBar: FC = () => {
         >
             <HomeBtn />
             <SongTranslation />
-            <div></div>
+            <div className={`h-10 w-10`}></div>
         </div>
     )
 }
