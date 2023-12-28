@@ -1,4 +1,4 @@
-import { GlobalChordsProvider } from './globalChordsProvider'
+import { GlobalChordsProvider } from './global-chords-provider'
 import { NextThemesProvider } from './nextThemesProvider'
 
 const Providers = ({ children }: { children: React.ReactNode }) => {

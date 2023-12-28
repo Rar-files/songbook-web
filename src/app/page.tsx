@@ -12,11 +12,13 @@ const Dashboard: NextPage = () => {
     if (isLoading) return <div>loading...</div>
     return (
         <div className="flex flex-col m-4">
-            {data.map((songName: string, index: number) => (
-                <Link key={index} href={`/song/${index}`}>
-                    <div className="mb-2">{songName}</div>
-                </Link>
-            ))}
+            {data.map(
+                (songData: { id: number; name: string }, index: number) => (
+                    <Link key={index} href={`/song/${songData.id}`}>
+                        <div className="mb-2">{songData.name}</div>
+                    </Link>
+                )
+            )}
         </div>
     )
 }

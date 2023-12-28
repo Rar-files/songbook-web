@@ -1,0 +1,42 @@
+generator client {
+    provider = "prisma-client-js"
+}
+
+datasource db {
+    provider = "postgresql"
+    url = env("POSTGRES_PRISMA_URL") // uses connection pooling
+    directUrl = env("POSTGRES_URL_NON_POOLING") // uses a direct connection
+}
+
+model Song {
+    id          Int      @id @default(autoincrement())
+    name        String
+    structure   StructureElement[]
+    lyricsSets  LyricsSet[]
+    chordsSets  ChordsSet[]
+}
+
+model StructureElement {
+    id          Int         @id @default(autoincrement())
+    songId      Int
+    song        Song        @relation(fields: [songId], references: [id])
+    lyricSet    Int
+    chordSet    Int
+    multiple    Int
+}
+
+model LyricsSet {
+    id                      Int         @id @default(autoincrement())
+    songId      Int
+    song        Song        @relation(fields: [songId], references: [id])
+    header                  String
+    lyrics                  String[]
+}
+
+model ChordsSet {
+    id                      Int         @id @default(autoincrement())
+    songId      Int
+    song        Song        @relation(fields: [songId], references: [id])
+    type        String
+    chords      String
+}

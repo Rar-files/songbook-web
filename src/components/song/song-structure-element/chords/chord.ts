@@ -1,4 +1,4 @@
-import { GlobalChordsContext } from '@/app/providers/globalChordsProvider'
+import { GlobalChordsContext } from '@/app/providers/global-chords-provider'
 import { IChord } from '@/types/IChord'
 import { useContext } from 'react'
 

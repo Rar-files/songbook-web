@@ -1,12 +1,70 @@
-import { promises as fs } from 'fs'
-import { NextResponse } from 'next/server'
+import { IChord } from '@/types/IChord'
+import { IChordsSet } from '@/types/IChordsSet'
+import { ISong } from '@/types/ISong'
+import { PrismaClient } from '@prisma/client'
+import { NextRequest, NextResponse } from 'next/server'
 
-export async function GET() {
-    const file = await fs.readFile(
-        process.cwd() + '/public/data/songbook.json',
-        'utf8'
-    )
-    const data = await JSON.parse(file)
+const prisma = new PrismaClient()
 
-    return NextResponse.json(data, { status: 200 })
+export const GET = async () => {
+    const songs = await prisma.song.findMany({
+        include: {
+            chordsSets: true,
+            lyricsSets: true,
+            structure: true,
+        },
+    })
+
+    const songResponse: ISong[] = songs.map((song) => ({
+        ...song,
+        chordsSets: song?.chordsSets.map(
+            (chordsSet) =>
+                ({
+                    ...chordsSet,
+                    chords: JSON.parse(chordsSet.chords) as IChord[][],
+                }) as IChordsSet
+        ),
+    }))
+
+    return NextResponse.json(songResponse, { status: 200 })
+}
+
+export const POST = async (request: NextRequest) => {
+    const reqData = await request.json()
+
+    if (!reqData) return NextResponse.json({ error: 'No request data' })
+
+    const song = reqData as ISong
+
+    if (!song.name || !song.chordsSets || !song.lyricsSets || !song.structure)
+        return NextResponse.json({ error: 'Incorrect request' })
+
+    const prismaReq = await prisma.song.create({
+        data: {
+            name: song.name,
+            structure: {
+                create: song.structure,
+            },
+            lyricsSets: {
+                create: song.lyricsSets,
+            },
+            chordsSets: {
+                create: song.chordsSets.map(
+                    (chordSet) =>
+                        ({
+                            type: chordSet.type,
+                            chords: JSON.stringify(chordSet.chords),
+                        }) as { type: string; chords: string }
+                ),
+            },
+        },
+
+        include: {
+            chordsSets: true,
+            lyricsSets: true,
+            structure: true,
+        },
+    })
+
+    return NextResponse.json(prismaReq, { status: 200 })
 }

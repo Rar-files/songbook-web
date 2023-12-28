@@ -13,10 +13,8 @@ const ToggleDarkBtn: FC = () => {
         >
             {theme === 'dark' ? (
                 <span className={'icon-[mdi--weather-sunny]'} />
-            ) : theme === 'light' ? (
-                <span className={'icon-[mdi--weather-night]'} />
             ) : (
-                <span className={'icon-[mdi--theme-light-dark]'} />
+                <span className={'icon-[mdi--weather-night]'} />
             )}
         </button>
     )
