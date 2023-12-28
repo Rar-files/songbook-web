@@ -13,7 +13,7 @@ type SongData = {
 
 const Dashboard: NextPage = () => {
     const [search, setSearch] = useState('')
-    const { data, error, isLoading } = useSWR(`/api/song/list`, (...args) =>
+    const { data, error, isLoading } = useSWR(`/api/song`, (...args) =>
         fetch(...args).then((res) => res.json())
     )
 
