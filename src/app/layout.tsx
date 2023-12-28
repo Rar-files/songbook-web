@@ -3,7 +3,7 @@ import type { Metadata } from 'next'
 
 import '@/styles/tailwind.css'
 import '@/styles/globalHTMLElements.css'
-import ToggleDarkBtn from '@/components/menu-bar/toggleDarkBtn'
+import ToggleDarkBtn from '@/components/toggleDarkBtn'
 
 export const metadata: Metadata = {
     title: 'About',
