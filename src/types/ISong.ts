@@ -6,6 +6,7 @@ import { IStructureElement } from './IStructureElement'
 export interface ISong {
     id: number
     name: string
+    categoryId: number
     category: Category
     structure: IStructureElement[]
     lyricsSets: ILyricsSet[]

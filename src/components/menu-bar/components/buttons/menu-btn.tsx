@@ -10,7 +10,7 @@ type props = {
 const MenuBtn: FC<props> = ({ children, onClick }: props) => {
     return (
         <button
-            className={`h-10 w-10 rounded-md hover:scale-110 duration-200 bg-slate-300 dark:bg-slate-900`}
+            className={`h-10 w-10 m-0.5 rounded-md hover:scale-110 duration-200 bg-slate-300 dark:bg-slate-900`}
             onClick={onClick}
         >
             {children}

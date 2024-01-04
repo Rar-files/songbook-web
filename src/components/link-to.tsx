@@ -18,9 +18,9 @@ const LinkTo: FC<props> = ({ children, href }: props) => {
     }
 
     return (
-        <a type="button" aria-pressed="false" onClick={handleClick}>
+        <span className={`cursor-pointer`} onClick={handleClick}>
             <Link href={href}>{children}</Link>
-        </a>
+        </span>
     )
 }
 

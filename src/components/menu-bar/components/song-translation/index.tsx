@@ -28,7 +28,7 @@ const SongTranslation: FC = () => {
     }
 
     return (
-        <div className={`h-10 w-32 flex flex-row justify-between`}>
+        <>
             <MenuBtn onClick={decrementTranslation}>
                 <span className={'icon-[mdi--minus]'} />
             </MenuBtn>
@@ -36,7 +36,7 @@ const SongTranslation: FC = () => {
             <MenuBtn onClick={incrementTranslation}>
                 <span className={'icon-[mdi--plus]'} />
             </MenuBtn>
-        </div>
+        </>
     )
 }
 

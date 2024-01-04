@@ -33,7 +33,7 @@ const CategorySongsList: NextPage<{ params: { id: string } }> = ({
 
     return (
         <div className="flex flex-col">
-            <div className="text-2xl">{categorySongsData.name}</div>
+            <div className="text-2xl m-3 mb-1">{categorySongsData.name}</div>
             <input
                 className={`p-2 rounded-md w-3/4 max-w-60 h-8 m-2 mt-3 bg-slate-200 dark:bg-slate-700 placeholder:dark:text-slate-300 placeholder:text-[#2f3b49] `}
                 type="text"

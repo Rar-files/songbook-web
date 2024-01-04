@@ -6,6 +6,8 @@ const useListSorter = () => {
         return data.sort((a, b) => {
             const nameA = a.name.toLowerCase()
             const nameB = b.name.toLowerCase()
+            if (nameA == 'inne' || nameA == 'other') return 1
+            if (nameB == 'inne' || nameB == 'other') return -1
             if (nameA < nameB) {
                 return -1
             }

@@ -1,10 +1,9 @@
 import { IStructureElement } from '@/types/IStructureElement'
 import { FC } from 'react'
-import Lyrics from './lyrics'
 import { ILyricsSet } from '@/types/ILyricsSet'
 import { IChordsSet } from '@/types/IChordsSet'
 import SSEHeader from './sse-header'
-import Chords from './chords'
+import SSELirycsChords from './sse-lirycs-chords'
 
 type SongSEProps = {
     structureElement: IStructureElement
@@ -26,10 +25,11 @@ const SongStructureElement: FC<SongSEProps> = ({
             {Array(structureElement.multiple)
                 .fill(true)
                 .map((item, index) => (
-                    <div key={index} className={`flex flex-row mb-5`}>
-                        <Lyrics lyrics={lyricSet.lyrics} />
-                        <Chords chords={chordSet} />
-                    </div>
+                    <SSELirycsChords
+                        key={index}
+                        lyrics={lyricSet.lyrics}
+                        chords={chordSet}
+                    />
                 ))}
         </div>
     )

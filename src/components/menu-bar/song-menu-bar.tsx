@@ -4,16 +4,21 @@ import SongTranslation from './components/song-translation'
 import MenuBarLayout from './components/menu-bar-layout'
 import BackBtn from './components/buttons/back-btn'
 import ToggleDarkModeBtn from './components/buttons/toggle-dark-mode-btn'
+import MenuBarCol from './components/menu-bar-col'
 
 const SongMenuBar: FC = () => {
     return (
         <MenuBarLayout>
-            <div className="flex flex-row justify-start">
+            <MenuBarCol allign={'LEFT'}>
                 <BackBtn />
                 <HomeBtn />
-            </div>
-            <SongTranslation />
-            <ToggleDarkModeBtn />
+            </MenuBarCol>
+            <MenuBarCol allign={'CENTER'}>
+                <SongTranslation />
+            </MenuBarCol>
+            <MenuBarCol allign={'RIGHT'}>
+                <ToggleDarkModeBtn />
+            </MenuBarCol>
         </MenuBarLayout>
     )
 }

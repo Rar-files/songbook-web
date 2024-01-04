@@ -8,7 +8,7 @@ export const GET = async (
     { params }: { params: { id: string } }
 ) => {
     const id = +params.id
-    const categorySongs = await prisma.category.findMany({
+    const categorySongs = await prisma.category.findUnique({
         where: {
             id,
         },

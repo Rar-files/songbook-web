@@ -38,7 +38,13 @@ export const POST = async (request: NextRequest) => {
 
     const song = reqData as ISong
 
-    if (!song.name || !song.chordsSets || !song.lyricsSets || !song.structure)
+    if (
+        !song.name ||
+        !song.chordsSets ||
+        !song.lyricsSets ||
+        !song.structure ||
+        !song.categoryId
+    )
         return NextResponse.json(
             { error: 'Incorrect request' },
             { status: 400 }
@@ -46,6 +52,7 @@ export const POST = async (request: NextRequest) => {
 
     const prismaReq = await prisma.song.create({
         data: {
+            categoryId: song.categoryId,
             name: song.name,
             structure: {
                 create: song.structure,
@@ -65,6 +72,7 @@ export const POST = async (request: NextRequest) => {
         },
 
         include: {
+            category: true,
             chordsSets: true,
             lyricsSets: true,
             structure: true,
