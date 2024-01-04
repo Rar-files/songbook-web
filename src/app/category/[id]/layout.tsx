@@ -1,11 +1,11 @@
 'use client'
 
-import SongMenuBar from '@/components/menu-bar/song-menu-bar'
+import CategoryMenuBar from '@/components/menu-bar/category-menu-bar'
 
 const SongLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <div>
-            <SongMenuBar />
+            <CategoryMenuBar />
             {children}
         </div>
     )

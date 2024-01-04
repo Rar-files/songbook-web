@@ -16,6 +16,7 @@ export const GET = async (
             id,
         },
         include: {
+            category: true,
             chordsSets: true,
             lyricsSets: true,
             structure: true,
