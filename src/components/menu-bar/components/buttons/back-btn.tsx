@@ -6,7 +6,7 @@ import LinkTo from '@/components/link-to'
 import MenuBtn from './menu-btn'
 
 const BackBtn: FC = () => {
-    let lastPath = getCookie('lastPath')
+    let lastPath = getCookie('lastPath', { sameSite: 'strict' })
 
     if (!lastPath) lastPath = '/'
 

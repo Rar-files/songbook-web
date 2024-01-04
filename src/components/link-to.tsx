@@ -14,7 +14,7 @@ const LinkTo: FC<props> = ({ children, href }: props) => {
     const path = usePathname()
 
     const handleClick = () => {
-        setCookie('lastPath', path)
+        setCookie('lastPath', path, { sameSite: 'strict' })
     }
 
     return (
