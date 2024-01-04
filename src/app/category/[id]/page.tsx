@@ -1,9 +1,9 @@
 'use client'
 
-import LinkTo from '@/components/link-to'
 import { useListSorter } from '@/hooks/useListSorter'
 import { IListElement } from '@/types/IListElement'
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import { useState } from 'react'
 import useSWR from 'swr'
 
@@ -46,9 +46,9 @@ const CategorySongsList: NextPage<{ params: { id: string } }> = ({
                         value.name.toLowerCase().includes(search.toLowerCase())
                     )
                     .map((song: SongListElement, index: number) => (
-                        <LinkTo key={index} href={`/song/${song.id}`}>
+                        <Link key={index} href={`/song/${song.id}`}>
                             <div className="mb-2">{song.name}</div>
-                        </LinkTo>
+                        </Link>
                     ))}
             </div>
         </div>

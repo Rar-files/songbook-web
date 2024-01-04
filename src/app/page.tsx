@@ -1,10 +1,9 @@
 'use client'
 
-import LinkTo from '@/components/link-to'
-import HomeMenuBar from '@/components/menu-bar/home-menu-bar'
 import { useListSorter } from '@/hooks/useListSorter'
 import { IListElement } from '@/types/IListElement'
 import type { NextPage } from 'next'
+import Link from 'next/link'
 import { useState } from 'react'
 import useSWR from 'swr'
 
@@ -25,7 +24,6 @@ const Dashboard: NextPage = () => {
 
     return (
         <>
-            <HomeMenuBar />
             <div className="flex flex-col">
                 <input
                     className={`p-2 rounded-md w-3/4 max-w-60 h-8 m-2 mt-3 bg-slate-200 dark:bg-slate-700 placeholder:dark:text-slate-300 placeholder:text-[#2f3b49] `}
@@ -41,12 +39,9 @@ const Dashboard: NextPage = () => {
                                 .includes(search.toLowerCase())
                         )
                         .map((category: CategoryListElement, index: number) => (
-                            <LinkTo
-                                key={index}
-                                href={`/category/${category.id}`}
-                            >
+                            <Link key={index} href={`/category/${category.id}`}>
                                 <div className="mb-2">{category.name}</div>
-                            </LinkTo>
+                            </Link>
                         ))}
                 </div>
             </div>

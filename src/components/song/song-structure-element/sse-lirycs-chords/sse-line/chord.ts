@@ -1,5 +1,5 @@
-import { GlobalChordsContext } from '@/app/providers/global-chords-provider'
 import { TranslationContext } from '@/app/providers/translation-provider'
+import { globalChords } from '@/data/global-chords'
 import { IChord } from '@/types/IChord'
 import { useContext } from 'react'
 
@@ -8,7 +8,6 @@ type ChordProps = {
 }
 
 const Chord = ({ chord }: ChordProps) => {
-    const globalChords = useContext(GlobalChordsContext)
     const { translation } = useContext(TranslationContext)
 
     const songKey = globalChords.zeroKeyID + translation

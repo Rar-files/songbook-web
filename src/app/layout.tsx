@@ -3,6 +3,7 @@ import type { Metadata } from 'next'
 
 import '@/styles/tailwind.css'
 import '@/styles/globalHTMLElements.css'
+import MenuBar from '@/components/menu-bar'
 
 export const metadata: Metadata = {
     title: 'About',
@@ -13,7 +14,10 @@ const RootLayout = ({ children }: { children: React.ReactNode }) => {
     return (
         <html lang="en">
             <body className={`bg-slate-100 dark:bg-slate-900`}>
-                <Providers>{children}</Providers>
+                <Providers>
+                    <MenuBar />
+                    {children}
+                </Providers>
             </body>
         </html>
     )
