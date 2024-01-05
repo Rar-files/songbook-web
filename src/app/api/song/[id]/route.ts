@@ -1,10 +1,8 @@
+import { prisma } from '@/services/prisma'
 import { IChord } from '@/types/IChord'
 import { IChordsSet } from '@/types/IChordsSet'
 import { ISong } from '@/types/ISong'
-import { PrismaClient } from '@prisma/client'
 import { NextResponse } from 'next/server'
-
-const prisma = new PrismaClient()
 
 export const GET = async (
     request: Request,

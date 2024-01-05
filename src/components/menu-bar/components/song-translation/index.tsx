@@ -1,6 +1,6 @@
-import { TranslationContext } from '@/app/providers/translation-provider'
 import { FC, useContext } from 'react'
 import MenuBtn from '../buttons/menu-btn'
+import { TranslationContext } from '@/services/providers/translation-provider'
 
 const SongTranslation: FC = () => {
     const { translation, setTranslation } = useContext(TranslationContext)
