@@ -8,7 +8,7 @@ const Logo = () => {
                     id="logo"
                     className={`icon-[mdi--book-open-blank-variant] m-1`}
                 />
-                <span>Spiewnik</span>
+                <span>Śpiewnik</span>
             </div>
         </Link>
     )

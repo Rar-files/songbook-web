@@ -1,5 +1,7 @@
 'use client'
 
+import Loading from '@/app/loading'
+import Error from '@/app/error'
 import { useListSorter } from '@/hooks/useListSorter'
 import { IListElement } from '@/types/IListElement'
 import type { NextPage } from 'next'
@@ -25,15 +27,14 @@ const CategorySongsList: NextPage<{ params: { id: string } }> = ({
         (...args) => fetch(...args).then((res) => res.json())
     )
 
-    if (error) return <div>failed to load</div>
-    if (isLoading) return <div>loading...</div>
+    if (error) return <Error />
+    if (isLoading) return <Loading />
 
     const categorySongsData = data as CategorySongs
     const dataToShow = ListSort(categorySongsData.songs)
 
     return (
         <div className="flex flex-col">
-            <div className="text-2xl m-3 mb-1">{categorySongsData.name}</div>
             <input
                 className={`p-2 rounded-md w-3/4 max-w-60 h-8 m-2 mt-3 bg-slate-200 dark:bg-slate-700 placeholder:dark:text-slate-300 placeholder:text-[#2f3b49] `}
                 type="text"

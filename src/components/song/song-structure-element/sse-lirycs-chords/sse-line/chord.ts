@@ -1,5 +1,5 @@
-import { TranslationContext } from '@/app/providers/translation-provider'
 import { globalChords } from '@/data/global-chords'
+import { TranslationContext } from '@/services/providers/translation-provider'
 import { IChord } from '@/types/IChord'
 import { useContext } from 'react'
 

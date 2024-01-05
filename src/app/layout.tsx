@@ -1,9 +1,9 @@
-import { Providers } from './providers'
 import type { Metadata } from 'next'
 
 import '@/styles/tailwind.css'
 import '@/styles/globalHTMLElements.css'
 import MenuBar from '@/components/menu-bar'
+import { Providers } from '@/services/providers'
 
 export const metadata: Metadata = {
     title: 'About',
